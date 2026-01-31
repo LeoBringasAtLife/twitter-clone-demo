@@ -10,7 +10,7 @@ const CONFIG = {
 function init() {
   initComponents();
   updateDynamicInfo();
-  console.log('Cargo el portfolio ✅');
+  console.log('Carga de portfolio completada ✅');
 }
 
 function initComponents() {
@@ -21,7 +21,7 @@ function initComponents() {
 function updateDynamicInfo() {
   const details = document.querySelectorAll('.detail');
   let joinDateElement = null;
-  
+
   for (const detail of details) {
     if (detail.textContent.includes('Se unió')) {
       joinDateElement = detail.querySelector('span:last-child') || detail;
@@ -33,7 +33,7 @@ function updateDynamicInfo() {
     const days = daysSince(CONFIG.joinDate);
     const months = Math.floor(days / 30);
     const years = Math.floor(days / 365);
-    
+
     let timeText = '';
     if (years > 0) {
       timeText = `hace ${years} año${years > 1 ? 's' : ''}`;
@@ -42,12 +42,12 @@ function updateDynamicInfo() {
     } else {
       timeText = `hace ${days} día${days > 1 ? 's' : ''}`;
     }
-    
-    const monthYear = new Date(CONFIG.joinDate).toLocaleDateString('es-ES', { 
-      month: 'long', 
-      year: 'numeric' 
+
+    const monthYear = new Date(CONFIG.joinDate).toLocaleDateString('es-ES', {
+      month: 'long',
+      year: 'numeric'
     });
-    
+
     joinDateElement.innerHTML = `Se unió en ${monthYear} <span style="color: #657786; font-size: 0.85em;">(${timeText})</span>`;
   }
 }
@@ -57,17 +57,17 @@ if (document.readyState === 'loading') {
 } else {
   init();
 }
-
-/* Arriba, arriba, abajo, abajo, izquierda, derecha */
-let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
+// ?TRUCO!
+/* Arriba, arriba, abajo, abajo, derecha, izquierda */
+let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowRight', 'ArrowLeft'];
 let konamiIndex = 0;
 
 document.addEventListener('keydown', (e) => {
   if (e.key === konamiCode[konamiIndex]) {
     konamiIndex++;
     if (konamiIndex === konamiCode.length) {
-      console.log('Konami Code activado! Has desbloqueado el modo desarrollador.');
-      console.log('Secreto: Leonardo ama programar mientras escucha "World Champion".');
+      console.log('KonamiCode activado! desbloqueaste el modo desarrollador.');
+      console.log('Secreto: Leonardo Bringas le encanta programar mientras escucha "World Champion".');
       konamiIndex = 0;
     }
   } else {
